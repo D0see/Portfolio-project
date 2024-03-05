@@ -7,8 +7,9 @@
     /* Colors */
   }
 
-html, body {
+body {
     min-width: 320px;
+    max-height: 1080px;
     overflow: hidden;
 }
 
@@ -49,6 +50,15 @@ html, body {
     background-color: lightgray;
     border: 2px solid black;
     opacity: 0%;
+    transition: transform 0.15s ease;
+}
+
+.closebutton:hover {
+    transform: scale(1.10);
+}
+
+.closebutton:active {
+    transform: scale(0.95);
 }
 
 .nameandagecontainer {
@@ -60,29 +70,42 @@ html, body {
     height: 55px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    width: 95%;
-    gap: 35%;
+    justify-content: space-between;
+    width: 100%;
     font-size: 24px;
     background-color: lightgray;
     transition: bottom 0.25s;
+    text-transform: uppercase;
+}
+
+.name {
+    padding-left: 8px;
+}
+
+.age {
+    padding-right: 8px;
 }
 
 .description {
     position: absolute;
     box-sizing: border-box;
-    top: 460px;
+    top: 410px;
     left: 50%;
     transform: translate(-50%, 0);
-    max-width: 700px;
-    min-width: calc(var(--portrait-max-size));
+    width: 300px;
+    max-height: 400px;
     opacity: 0%;
-    border: 1px solid red;
+    overflow: auto;
 }
 
 .description p, h2 {
     margin: 20px;
-    border: 1px solid red;
+}
+
+.contact {
+    display: flex;
+    justify-content: center;
+    gap: 12%;
 }
 
 /* Other profiles */
@@ -99,6 +122,15 @@ html, body {
     display: block;
     left: 50%;
     transform: translate(-50%, 0);
+    transition: transform 0.15s ease-in-out;
+}
+
+.Arrow:hover {
+    transform: translate(-50%, 0) scale(1.10);
+}
+
+.Arrow:active {
+    transform: translate(-50%, 0) scale(0.95);
 }
 
 #toparrow {
