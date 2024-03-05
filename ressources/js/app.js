@@ -106,12 +106,12 @@ const profileLogic = function() {
         portraitContainer[profileCounter].style.top = '50%';
         portrait[profileCounter].addEventListener('mouseenter', mouseEnterPortrait);
         portrait[profileCounter].addEventListener('mouseleave', mouseLeavesPortrait);
-        description[profileCounter].style.animation = 'disappear 0.5s ease forwards';
+        description[profileCounter].style.animation = 'disappear 0.5s ease forwards, roll 1s';
         closeButton[profileCounter].style.animation = 'disappear 0.25s ease forwards';
-        portraitNameAndAgeContainer[profileCounter].style.bottom = '60px';
+        portraitNameAndAgeContainer[profileCounter].style.bottom = '60px'
         closeButton[profileCounter].removeEventListener('click', clickCloseButton);
-        topArrow.style.animation = 'appear 0.25s ease forwards';
-        bottomArrow.style.animation = 'appear 0.25s ease forwards';
+        topArrow.style.animation = 'appear 0.5s cubic-bezier(.69,-0.01,.13,-0.11) forwards';
+        bottomArrow.style.animation = 'appear 0.5s cubic-bezier(.69,-0.01,.13,-0.11) forwards';
 
     }
 
@@ -119,8 +119,7 @@ const profileLogic = function() {
 
     portrait[profileCounter].addEventListener('click', function() {
         portraitContainer[profileCounter].style.top = '250px';
-        description[profileCounter].style.animation = 'appear 1s ease forwards';
-
+        description[profileCounter].style.animation = 'appear 0.75s ease forwards, unroll 0.70s';
         portrait[profileCounter].removeEventListener('mouseenter', mouseEnterPortrait);
         portrait[profileCounter].removeEventListener('mouseleave', mouseLeavesPortrait);
         portrait[profileCounter].style.cursor = 'initial';
@@ -129,8 +128,8 @@ const profileLogic = function() {
         closeButton[profileCounter].style.animation = 'appear 0.25s ease forwards';
         closeButton[profileCounter].addEventListener('mouseover', mouseEnterCloseButton);
         closeButton[profileCounter].addEventListener('click', clickCloseButton);
-        topArrow.style.animation = 'disappear 0.25s ease forwards';
-        bottomArrow.style.animation = 'disappear 0.25s ease forwards';
+        topArrow.style.animation = 'disappear 0.10s ease forwards';
+        bottomArrow.style.animation = 'disappear 0.10s ease forwards';
     })
 
 }
