@@ -6,17 +6,26 @@ const closeButton = document.getElementsByClassName('closebutton');
 const description = document.getElementsByClassName('description');
 
 const profiles = document.getElementsByClassName('profile');
-// Profile Counter
 
+// Profile Counter
 let profileCounter = 0;
 
 function profileCounterIncrement() {
-    if (profileCounter < 2) {
-        profileCounter++
+    if (profileCounter <(profiles.length - 1)) {
+        profileCounter++;
     } else {
         profileCounter = 0;
     }
 }
+
+function profileCounterDecrement() {
+    if (profileCounter > 0) {
+        profileCounter--;
+    } else {
+        profileCounter = (profiles.length - 1);
+    }
+}
+
 // Initialise the first profile 
 profiles[profileCounter].style.display = 'block';
 
@@ -28,6 +37,8 @@ const bottomArrow = arrows[1];
 
 
 // Arrows Event listeners Assignements 
+
+    //Turns cursor into pointer while you hover over the arrows
 const mouseEnterArrow = function(event) {
     event.target.style.cursor = 'pointer';
 }
@@ -35,20 +46,36 @@ const mouseEnterArrow = function(event) {
 topArrow.addEventListener('mouseenter', mouseEnterArrow);
 bottomArrow.addEventListener('mouseenter', mouseEnterArrow);
 
+    // Handles swiping animations
 
-    // I learned about reflow today :)
+        // Swiping related values 
+const swipeSpeed = '1000ms'
+
+        // I learned about reflow today :)
 const mouseClickTopArrow = function() {
     portraitContainer[profileCounter].style.animation = '';
     void portraitContainer[profileCounter].offsetWidth;
-    portraitContainer[profileCounter].style.animation = 'swipe-up 1s ease-in-out forwards';
+    portraitContainer[profileCounter].style.animation = `swipe-up ${swipeSpeed} ease-in-out forwards`;
     profileCounterIncrement();
     profileLogic();
     profiles[profileCounter].style.display = 'block';
-    portraitContainer[profileCounter].style.animation = 'come-up 1s ease-in-out';
+    portraitContainer[profileCounter].style.animation = `come-up ${swipeSpeed} ease-in-out`;
+    
+}
+
+const mouseClickBottomArrow = function() {
+    portraitContainer[profileCounter].style.animation = '';
+    void portraitContainer[profileCounter].offsetWidth;
+    portraitContainer[profileCounter].style.animation = `swipe-down ${swipeSpeed} ease-in-out forwards`;
+    profileCounterDecrement();
+    profileLogic();
+    profiles[profileCounter].style.display = 'block';
+    portraitContainer[profileCounter].style.animation = `come-down ${swipeSpeed} ease-in-out`;
     
 }
 
 topArrow.addEventListener('click', mouseClickTopArrow);
+bottomArrow.addEventListener('click', mouseClickBottomArrow);
 
 // Handles all profile Logic
 const profileLogic = function() {

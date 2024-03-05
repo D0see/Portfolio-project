@@ -134,6 +134,9 @@ html, body {
     }
 }
 
+    /* Swipe Animations */
+        /* Up */
+
 @keyframes swipe-up {
     0% {
 
@@ -148,6 +151,31 @@ html, body {
 @keyframes come-up {
     0% {
         top: 1200px;
+        display: block;
+    }
+
+    100% {
+        top: 50%;
+        display: block;
+    }
+}
+
+        /* Down */
+
+@keyframes swipe-down {
+    0% {
+
+    }
+
+    100% {
+        top: 1200px;
+        display: none;
+    }
+}
+
+@keyframes come-down {
+    0% {
+        top: -500px;
         display: block;
     }
 
